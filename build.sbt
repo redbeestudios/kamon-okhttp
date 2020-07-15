@@ -22,7 +22,7 @@ val kamonTestkit = "io.kamon" %% "kamon-testkit" % "2.1.0"
 val kanelaAgent = "io.kamon" % "kanela-agent" % kanelaVersion
 val kamonCommon = "io.kamon" %% "kamon-instrumentation-common" % "2.0.0"
 
-val okhttp = "com.squareup.okhttp3" % "okhttp" % "4.5.0"
+val okhttp = "com.squareup.okhttp3" % "okhttp" % "3.14.9"
 val scalatest = "org.scalatest" %% "scalatest" % "3.1.0"
 val jettyServerV9 = "org.eclipse.jetty" % "jetty-server" % jettyV9Version
 val jettyServletV9 = "org.eclipse.jetty" % "jetty-servlet" % jettyV9Version
@@ -34,7 +34,7 @@ lazy val okHttp3 = (project in file("."))
     bintrayPackage := "kamon-servlet",
     moduleName := "kamon-okhttp",
     AutomaticModuleName.settings("kamon-okhttp"),
-    scalaVersion := "2.11.12",
+    scalaVersion := "2.12.8",
     crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1"),
     scalacOptions ++= Seq(
       "-language:higherKinds",

@@ -17,11 +17,15 @@
 package kamon.okhttp3.instrumentation
 
 import okhttp3.{Interceptor, Response}
+import org.slf4j.LoggerFactory
 
 final class KamonTracingInterceptor extends Interceptor {
+  val log = LoggerFactory.getLogger(classOf[KamonTracingInterceptor])
 
   override def intercept(chain: Interceptor.Chain): Response = {
     val clientRequestHandler = KamonOkHttpTracing.withNewSpan(chain.request)
+    log.trace(s"---- Intercepting request  METHOD: ${clientRequestHandler.request.method()} - URL: ${clientRequestHandler.request.url().url().toString}  ---")
+    log.trace(s"---- Span ${clientRequestHandler.span.id.string} - Trace ${clientRequestHandler.span.trace.id.string} ---")
     val request = clientRequestHandler.request
     try {
       val response = chain.proceed(request)
